@@ -1,0 +1,378 @@
+body{
+    /* Uses CSS Grid as the main layout for the page */
+    display: grid;
+    /* Keeps content narrower than full viewport */
+    width: 90%;
+    /* Centers the grid container */
+    margin: auto;
+
+    /* keep your background image */
+    background-image: url(Confluence-Background-2.jpg);
+    /* Fallback color behind the image */
+    background-color: rgb(243, 242, 242); /* still allowed (image stays) */
+
+    /* Uses theme variable for text color */
+    color: var(--text);
+    /* Leaves room at top for fixed nav */
+    padding-top: 15vh;
+
+    /* Needed so pseudo-elements can relate to this element’s stacking context */
+    position: relative; /* needed for overlay */
+}
+body::before{
+  /* Creates a full-page overlay layer (for contrast in dark mode) */
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  pointer-events: none;
+  /* NOTE: z-index:-1 can push this behind the body background in some cases;
+     your intent is “overlay behind content”, which works because body has position:relative. */
+  z-index: -1;
+}
+
+/* THEME VARIABLES */
+:root{
+  /* Default (light) theme values */
+  --text: #faebd7;
+  --nav-border: #ffffff;
+  --link: #faebd7;
+  /* No overlay in light mode */
+  --overlay: rgba(255,255,255,0.00); /* light mode overlay (none) */
+  /* Optional translucent panel/background for readability if used later */
+  --panel: rgba(0,0,0,0.25);         /* optional readable backdrop */
+}
+
+/* Dark mode overrides */
+:root[data-theme="dark"]{
+  /* Values used when JS sets data-theme="dark" on <html> */
+  --text: #f2f2f2;
+  --nav-border: rgba(255,255,255,0.7);
+  --link: #f2f2f2;
+  /* Dark overlay to improve text contrast against background image */
+  --overlay: rgba(0,0,0,0.60);       /* dark overlay to improve contrast */
+  --panel: rgba(0,0,0,0.50);
+}
+
+.images{
+    /* Thick border around images */
+    border:15px solid #f7f6f6;
+    /* Forces a minimum width; can cause horizontal overflow on smaller screens */
+    min-width: 640px;
+
+}
+
+nav{
+    /* Flexible nav row */
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    /* Fixed width; note it may feel cramped if you add more links */
+    width: 50%;
+    /* Fixed nav at top-left */
+    position: fixed;
+    clear: both;
+    left: 0;
+    top: 0;
+    /* Uses theme variable for border */
+    border-bottom: 1px solid var(--nav-border);
+}
+
+/* Sets link styles for nav links AND all links globally */
+nav a, a{
+    color: var(--link);
+    text-decoration: none;
+}
+
+nav a{
+    /* NOTE: This duplicates and overrides the nav a rule above for color */
+    color: #faebd7;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 50px;
+}
+
+#theme-toggle{
+  /* Pushes the button to the far right in the flex row */
+  margin-left: auto;              /* pushes button to the right */
+  /* Minimal button look */
+  background: transparent;
+  border: 1px solid var(--nav-border);
+  color: var(--text);
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+#theme-toggle:hover{
+  /* Simple hover feedback */
+  opacity: 0.85;
+}
+
+.text-block{
+    /* Spacing around text blocks */
+    margin: 75px;
+    /* Adds airy look to text */
+    letter-spacing: 1.5px;
+}
+
+a{
+    /* NOTE: This duplicates the earlier nav a, a rule and will override color back to #faebd7 */
+    color: #faebd7;
+    text-decoration: none;
+}
+
+/*homepage*/
+#home{
+    /* Two-column grid for intro + portrait */
+    display:grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 75vh;
+    /* Named areas used by #intro and #portrait1 */
+    grid-template-areas: "intro portrait1";
+}
+
+#intro{
+    /* Assigns this element to the "intro" grid area */
+    grid-area: intro;
+}
+
+#portrait1{
+    /* Assigns this element to the "portrait1" grid area */
+    grid-area: portrait1;
+}
+
+/*Bio page*/
+#bio{
+    /* Two-column layout with two rows */
+    display:grid;
+    grid-template-columns:60% 40%;
+    grid-template-rows: 60vh 15vh;
+    /* Area layout: top row portrait+about, bottom row news+socials */
+    grid-template-areas: 
+    "portrait2 about"
+    "news socials";
+    
+}
+#about{
+    grid-area: about;
+    /* Overrides big .text-block margin a bit */
+    margin: 15px;
+}
+
+#portrait2{
+    grid-area: portrait2;
+}
+
+#news{
+    grid-area: news;
+}
+
+#socials{
+    grid-area: socials;
+}
+
+/*Music page*/
+#music{
+    /* Two-column grid for heading/links + video, then album + quote */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "music-h1 my-music-video-container"
+    "music-links my-music-video-container"
+    "ablum-cover isp1";
+}
+
+#music-h1{
+    grid-area: music-h1;
+}
+
+#my-music-video-container{
+    grid-area: my-music-video-container;
+    margin: auto;
+    /* Fixed size container (works well for 16:9) */
+    width: 640px;
+    height: 360px;
+}
+#my-music-video{
+    /* NOTE: No element in your HTML has id="my-music-video" currently,
+       so this rule won’t apply unless you add that id to the iframe. */
+    width: 100%;
+    height:100%;
+}
+
+#music-links{
+    grid-area: music-links;
+}
+
+#ablum-cover{
+    grid-area: ablum-cover;
+}
+
+#isp1{
+    grid-area: isp1;
+}
+
+/*playlist page*/
+#playlist{
+    /* 4-column grid for desktop layout */
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows:auto;
+    /* Named areas for playlist layout */
+    grid-template-areas:
+    "playlist-h1 . . ."
+    ". . . ."
+    "survival-island-playlist-song1 desc1 survival-island-playlist-song2 desc2"
+    "survival-island-playlist-song3 desc3 survival-island-playlist-song4 desc4"
+    "survival-island-playlist-song5 desc5 . .";
+}
+
+#playlist-h1{
+    grid-area: playlist-h1;
+}
+
+#song1{
+    /* NOTE: Your HTML uses id="survival-island-playlist-song1" (not "song1"),
+       so this selector will not match anything. */
+    grid-area: survival-island-playlist-song1;
+}
+
+#desc1{
+    /* NOTE: Your HTML uses id="survival-island-playlist-desc1" (not "desc1"),
+       so this selector will not match anything. */
+    grid-area: survival-island-playlist-desc1;
+}
+
+#desc2{
+    /* Same mismatch as above: HTML id is survival-island-playlist-desc2 */
+    grid-area: survival-island-playlist-desc2;
+}
+
+#song2{
+    /* Same mismatch as above: HTML id is survival-island-playlist-song2 */
+    grid-area: survival-island-playlist-song2;
+}
+
+#song3{
+    /* Same mismatch as above: HTML id is survival-island-playlist-song3 */
+    grid-area: survival-island-playlist-song3;
+}
+
+#desc3{
+    /* Same mismatch as above: HTML id is survival-island-playlist-desc3 */
+    grid-area: survival-island-playlist-desc3;
+}
+
+#desc4{
+    /* Same mismatch as above: HTML id is survival-island-playlist-desc4 */
+    grid-area: survival-island-playlist-desc4;
+}
+
+#song4{
+    /* Same mismatch as above: HTML id is survival-island-playlist-song4 */
+    grid-area: survival-island-playlist-song4;
+}
+
+#song5{
+    /* Same mismatch as above: HTML id is survival-island-playlist-song5 */
+    grid-area: survival-island-playlist-song5;
+}
+
+#desc5{
+    /* Same mismatch as above: HTML id is survival-island-playlist-desc5 */
+    grid-area: survival-island-playlist-desc5;
+}
+
+/* Responsive layout for small screens */
+@media screen and (max-width: 601px){
+  nav{
+    /* Adds spacing and allows wrap for cramped widths */
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  body{
+    /* NOTE: You are declaring multiple background sizes/positions,
+       but you only have one background-image set here. */
+    background-size: auto 70%, cover;
+    background-position: center bottom, center;
+    background-image: url(Confluence-Background-2.jpg);
+  }
+
+  body::before{
+    /* Forces dark overlay on small screens regardless of theme variables */
+    background: rgba(0,0,0,0.60);
+  }
+
+  #home,#bio,#music,#playlist
+  {
+    /* Push content below the fixed nav */
+    justify-content: flex-start;
+    padding-top: 80px;
+    padding-right: clamp(24px, 6vw, 40px);
+    min-height: auto;
+  }
+
+  /*playlist page: 2-column stacked pairs */
+  #playlist{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "playlist-h1  ."
+    ". . "
+    "survival-island-playlist-song1 survival-island-playlist-desc1" 
+    "survival-island-playlist-song2 survival-island-playlist-desc2"
+    "survival-island-playlist-song3  survival-island-playlist-desc3"
+    "survival-island-playlist-song4 survival-island-playlist-desc4"
+    "survival-island-playlist-song5 survival-island-playlist-desc5";
+  }
+}
+
+@media screen and (max-width: 360px){
+  nav{
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  body{
+    /* Same note: multiple size/position values but one background image */
+    background-size: auto 70%, cover;
+    background-position: center bottom, center;
+    background-image: url(Confluence-Background-2.jpg);
+  }
+
+  body::before{
+    background: rgba(0,0,0,0.60);
+  }
+
+  #home,#bio,#music,#playlist
+  {
+    justify-content: flex-start;
+    padding-top: 80px;
+    padding-right: clamp(24px, 6vw, 40px);
+    min-height: auto;
+  }
+
+  /*playlist page: single column stack */
+  #playlist{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "playlist-h1 "
+    ".  "
+    "survival-island-playlist-song1"
+    "survival-island-playlist-desc1" 
+    "survival-island-playlist-song2"
+    "survival-island-playlist-desc2"
+    "survival-island-playlist-song3"
+    "survival-island-playlist-desc3"
+    "survival-island-playlist-song4"
+    "survival-island-playlist-desc4"
+    "survival-island-playlist-song5"
+    "survival-island-playlist-desc5"
+    ;
+  }
+}

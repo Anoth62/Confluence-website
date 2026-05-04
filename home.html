@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sets character encoding so symbols/emoji display correctly -->
+    <meta charset="UTF-8" />
+    <!-- Makes the layout responsive on phones/tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Links your external stylesheet (make sure the path is correct) -->
+    <link rel="stylesheet" href="style/confluencev2.css"/>
+    <!-- Browser tab title -->
+    <title>Confluence Music</title>
+</head>
+<body>
+     <header>
+            <nav>
+                <!-- In-page anchor links to sections below -->
+                <a href="#home">Confluence</a>
+                <a href="#bio">Biography</a>
+                <a href="#music">Music</a>
+                <a href="#playlist">Survival Playlist</a>
+                <!-- Theme toggle button (JS updates text + root data-theme attribute) -->
+                <button id="theme-toggle" type="button" aria-label="Toggle theme">Dark mode</button>
+            </nav>
+        </header>
+
+        <!-- HOME section: intro text + portrait image -->
+        <section id="home">
+            <!-- Text block; matches CSS grid area "intro" -->
+            <article id="intro" class="text-block">
+                <h1><strong>#Home</strong></h1>
+                <h2>Confluence</h2>
+                <!-- Intro quote/statement -->
+                <p>"I've always wanted to learn what goes on behind the scenes in music and how they create these beautiful sounds that I heard all the time on the radio or my mp3 player. Since learning to play instruments, I always enjoy messing around with new sounds and creating different noises that I like all the while hoping that others enjoy them too."</p>
+
+            </article>
+
+            <!-- Artist portrait image; class hooks to shared image styling -->
+            <article id="portrait1">
+                <img class="images" id="artist1" src="style/Confluence-artist.jpg" alt="artist">
+
+            </article>
+        </section>
+    
+        <!-- BIO section: portrait + bio text + newsletter + socials -->
+        <section id="bio">
+            <!-- About text (grid area "about") -->
+            <article id="about" class="text-block">
+                <h1><strong>#Biography</strong></h1>
+                <h2>My Biography</h2>
+                <!-- Placeholder text -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus,
+                    Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam.Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
+                </p>
+            
+            </article>
+
+            <!-- Studio image (grid area "portrait2") -->
+            <article id="portrait2">
+                <img class="images" id="artist2" src="style/Studio.jpg" alt="studio">
+
+            </article>
+
+            <!-- Newsletter form (note: inputs currently behave like plain fields; see comment below) -->
+            <article id="news">
+                <form>
+                    <!-- Email input; value is used like placeholder here (means value submits as-is unless user changes it) -->
+                    <input type="email" name="Subscribe" id="NewsLetter" value="email address">
+                    <!-- Button input (does not submit without JS or type="submit") -->
+                    <input type="button" value="Subscribe">
+                
+                </form>
+            </article>
+
+            <!-- Social links with icon images -->
+            <article id="socials">
+                <p>Follow us!</p>
+                <p><a href="https://www.tiktok.com/@confluenceband"><img src="style/tiktok_logo_icon_186896.png" alt="TikTok"></a>    <a href="https://www.instagram.com/confluence.band/"><img src="style/Instagram-icon.png" alt="Instagram"></a>    <a href="https://www.facebook.com/people/confluenceband/61583236911483/?mibextid=wwXIfr&rdid=FNjTx7nsw3Xkn2o9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1B9G65ePwr%2F%3Fmibextid%3DwwXIfr"><img src="style/facebook_logo_icon_147291.png" alt="Facebook"></a></p>
+
+            </article>
+
+        </section>
+
+        <!-- MUSIC section: heading + video + album cover + platform links + quote -->
+        <section id="music">
+            <article id="music-h1">
+                <h1><strong>#Music</strong></h1>
+                <h2>My Music</h2>
+                <p>Listen Now on the apps below!</p>
+
+            </article>
+            
+            <!-- Video container; CSS gives it fixed 640x360 sizing -->
+            <article id="my-music-video-container">
+              <!-- YouTube embed; allowfullscreen enables full screen -->
+              <iframe src="https://www.youtube.com/embed/C7UkJwQG2WI?si=qQruG2SM4cdO0knn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </article>
+
+            <!-- Album art -->
+            <article>
+                <img id="ablum-cover" class="images" src="style/echo-Confluence2.jpg" alt="album cover">
+            </article>
+        
+            <!-- Platform links (Spotify/YouTube/Apple Music) -->
+            <article id="music-links">
+                <p><a href="https://open.spotify.com/track/1Lr9honq90LaHgHqWFsd5y?si=da38322da1e642af"><img src="style/Spotify_icon-icons.com_66783.png" alt="Spotify"></a>    <a href ="https://youtu.be/C7UkJwQG2WI?si=JRz3J4pnyhff3APR"><img src="style/Youtube-Icon.png" alt="Youtube"> </a>    <a href="https://music.apple.com/us/album/echo-single/1846208464"><img src="style/apple_music_macos_bigsur_icon_190383.png" alt="Apple Music"></a></p>
+            </article>
+
+            <!-- Quote/statement block (grid area "isp1") -->
+            <article id="isp1"  class="text-block">
+                <p>"I think it's important to know that expensive gear is not the way forward (at least for a while). Come to terms with playing your music for others and being happy with what you've created. It's also good to note that some music takes a long time to write and some comes to you in minutes. Have patience and enjoy it."</p>
+            </article>
+
+        </section>
+
+        <!-- PLAYLIST section: grid of embeds + description blocks -->
+        <section id="playlist">
+            <article id="playlist-h1" class="text-block">
+                <h1><strong>#Playlist</strong></h1>
+                <p>These are my songs that inspired me to create music!</p>
+ 
+            </article>
+
+            <!-- Song 1 embed + Spotify link -->
+            <article class="embed" id="survival-island-playlist-song1">
+                <iframe width="213.33" height="120" src="https://www.youtube.com/embed/DDdByJYUVeA?si=2XfLzeW-kp9EMbpC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <a href="https://open.spotify.com/track/3hZIvVYZWsuFpdWdXQFgKx?si=33a4ea915d2742a7">Euclid - Sleep Token</a>
+            </article>
+
+            <!-- NOTE: This element has TWO class attributes in your original.
+                 In HTML, only the last class attribute will be applied by the browser (so earlier one is ignored). -->
+            <article class="description" id="survival-island-playlist-desc1" class="text-block">
+                <p>nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
+            </article>
+
+            <!-- Same duplicate-class-attribute situation here -->
+            <article class="description" id="survival-island-playlist-desc2" class="text-block">
+                <p>nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
+            </article>
+
+            <!-- Song 2 embed + Spotify link (anchor is on same line; still valid) -->
+            <article class="embed" id="survival-island-playlist-song2">
+                <iframe width="213.33" height="120" src="https://www.youtube.com/embed/-mbgi1o3CSY?si=igEfme82Thd94LrG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://open.spotify.com/track/5XpUPdTWLLQiNkPbuku2Nj?si=0ad247adf9b74e30">Set It On Fire - My Darkest Days</a>
+            </article>
+
+            <!-- Song 3 embed + Spotify link -->
+            <article class="embed" id="survival-island-playlist-song3">
+                <iframe width="213.33" height="120" src="https://www.youtube.com/embed/EA-rkPsVyDk?si=EutHuzDYCI8bwbJm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://open.spotify.com/track/2YIYzI43f0eUssuXSd9vrZ?si=0ea7c465daf040a9">Slide Away- Chase The Wild</a>
+            </article>
+
+            <!-- Description blocks -->
+            <article class="description" id="survival-island-playlist-desc3" class="text-block">
+                <p>nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
+            </article>
+
+            <article class="description" id="survival-island-playlist-desc4" class="text-block">
+                <p>nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
+            </article>
+
+            <!-- Song 4 embed + Spotify link -->
+            <article class="embed" id="survival-island-playlist-song4">
+                <iframe width="213.33" height="120" src="https://www.youtube.com/embed/dX5QVdonohc?si=WnIeN0qrBbksdkct" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://open.spotify.com/track/2jrsxlKhIjO7utvFchhjnc?si=89e5fa7cd9e04410">Under a Paper Moon - All Time Low</a>
+            </article>
+
+            <!-- Song 5 embed + Spotify link -->
+            <article class="embed" id="survival-island-playlist-song5">
+                <iframe width="213.33" height="120" src="https://www.youtube.com/embed/Va75GaPv5jY?si=RV3cuG3B2096LeN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://open.spotify.com/track/1B241LRKmK6qDDTZfUajmm?si=a3b1c9f0fc0b431d">Cocoon - Catfish and the Bottlemen</a>
+            </article>
+
+            <article class="description" id="survival-island-playlist-desc5" class="text-block">
+                <p>nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
+            </article>
+
+        </section>
+
+        <!-- COLLAB form section -->
+        <section id="Collab">
+            <p>Please enter details if you wish to collab</p>
+            <form>
+                <!-- NOTE: value is acting like placeholder text; better UX would be placeholder attribute -->
+                <input type="text" name="Name" id="Name1" value="Please enter your name">
+                <!-- Phone input: required + pattern (your pattern currently won’t match typical 11 digits; see comment below) -->
+                <input type="tel" name="Phone Number" id="phone-number" required pattern="[0/9] {11}" value="Please enter your number">
+                <input type="email" name="Email" id="email" value="Please enter your email">
+                <!-- Terms link + checkbox for required consent -->
+                <label><a href="docs/Privacy-notice.pdf" target="_blank">Agree to terms and conditions</a> </label>
+                <input type="checkbox" name="TnC" id="TnC" required>
+                <!-- Button input: does not submit unless JS handles it -->
+                <input type="button" value="Submit"> 
+            </form>
+            <!-- Loads your JS (theme toggle likely lives here if you place it in this file) -->
+            <script src="Java/main.js"></script>
+        </section>
+    </body>
+</html>
